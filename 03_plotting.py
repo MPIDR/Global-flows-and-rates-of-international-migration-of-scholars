@@ -17,7 +17,7 @@ data_provider=["openalex", "scopus"][0]
 
 path_input = "./data_input/"
 path_processed = "./data_processed/"
-path_plots = "./plots/"
+path_plots = "./FIGURES/"
 
 fn_country_enriched =  f"{path_processed}{data_provider}_2023_V1_scholarlymigration_country_enriched.parquet" 
 fn_flows_enriched = f"{path_processed}{data_provider}_2023_V1_scholarlymigration_countryflows_enriched.parquet"
