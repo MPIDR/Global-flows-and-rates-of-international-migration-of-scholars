@@ -1,6 +1,6 @@
 ## Data and code for performing analyses and plotting figures for "Global flows and rates of international migration of scholars"
 
-**Related working paper**, 
+**Information on related working paper**
 
 **Title**: Global flows and rates of international migration of scholars
 
@@ -26,9 +26,9 @@ The data used were extracted from two Bibliometric Databases, Scopus and OpenAle
 | [openalex_2023_V1_scholarlymigration_countryflows_enriched.csv](https://raw.githubusercontent.com/MPIDR/Global-flows-and-rates-of-international-migration-of-scholars/master/data_processed/openalex_2023_V1_scholarlymigration_countryflows_enriched.csv) | Country level yearly bilateral flow of scholarly migration based on OpenAlex.                                                                                                      |
 | 01_prepare_enrich_data.py | Source code (Python >=3.9) for downloading World Bank data and merging with Scopus and OpenAlex data. Authors: Tom Theile (<https://github.com/tomthe>)                                                    |
 | 02_merge_openalex_and_scopus.py | Source code (Python >=3.9) for merging Scopus and OpenAlex data. Authors: Tom Theile (<https://github.com/tomthe>)                                                    |
-| 03_plotting.py | Source code (Python v3.9) for plotting Figures 2-5. Authors: Tom Theile, Aliakbar Akbaritabar (<https://github.com/tomthe>, <https://github.com/akbaritabar>)                                                    |
-| FIGURES\\ | Folder with plotted figures in different graphical formats.                                                                   |
-| data_input\\ | Folder input data (aggregated migration events of scholars).                                                               |
+| 03_plotting.py | Source code (Python >=3.9) for plotting Figures 2-5. Authors: Tom Theile, Aliakbar Akbaritabar (<https://github.com/tomthe>, <https://github.com/akbaritabar>)                                                    |
+| FIGURES\\ | Folder with plotted figures in PDF format.                                                                   |
+| data_input\\ | Folder with input data (aggregated migration events of scholars).                                                               |
 | data_processed\\ | Folder with processed/enriched data. Produced by scripts 01 and 02                                                     |
 
 We added all data files as plain text csv-files (with header line) and as binary [parquet](https://parquet.apache.org/) files. The contents of the csv and parquet files are the same.
