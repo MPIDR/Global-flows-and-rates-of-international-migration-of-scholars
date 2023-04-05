@@ -14,7 +14,7 @@
 
 **Main repository page:** https://github.com/MPIDR/Global-flows-and-rates-of-international-migration-of-scholars/edit/master/ReadMe.md
 
-The data used were extracted from two Bibliometric Databases, Scopus and OpenAlex, more description on [https://scholarlymigration.org/](https://scholarlymigration.org/). In addition, it is enriched by merging it with [World Bank data](http://api.worldbank.org/v2/country/all).
+The data used were extracted from two Bibliometric Databases, Scopus and OpenAlex. More description can be found on [https://scholarlymigration.org/](https://scholarlymigration.org/). In addition, it is enriched by merging it with [World Bank data](http://api.worldbank.org/v2/country/all).
 
 
 | File name              | Description                                                                                                                                              |
