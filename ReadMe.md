@@ -12,7 +12,7 @@
 
 **Authors of article:** Aliakbar Akbaritabar, Tom Theile, and Emilio Zagheni.
 
-**Main repository page:** <https://github.com/XXXXXXXXXX-XXXXXXXXXX>
+**Main repository page:** https://github.com/MPIDR/Global-flows-and-rates-of-international-migration-of-scholars/edit/master/ReadMe.md
 
 The data used were extracted from two Bibliometric Databases, Scopus and OpenAlex, more description on [https://scholarlymigration.org/](https://scholarlymigration.org/). In addition, it is enriched by merging with World Bank data from these three links:
 [http://api.worldbank.org/v2/country/all](http://api.worldbank.org/v2/country/all)
