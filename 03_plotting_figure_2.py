@@ -2,11 +2,13 @@ import pandas as pd
 import os
 import plotnine as gg
 
-# data/code DIR
-data_dir = os.path.join('N:\\', 'Theile', 'bibliometry', 'SMD', 'figures for scientific data', 'selected', 'manuscript_replication_data')
+# input and output directories
+path_processed = "./data_processed/"
+path_plots = "./FIGURES/"
 
-# v8
-oascp = pd.read_csv(os.path.join(data_dir, 'v8_dfmerged_openalex_scopus_country.csv'), dtype='str')
+
+# load merged data, this data is created in 02_merge_openalex_scopus.py :
+oascp = pd.read_csv(os.path.join(path_processed, 'dfmerged_openalex_scopus_country.csv'), dtype='str')
 
 
 # calculate a correlation between OpenAlex and Scopus yearly population rates
@@ -50,7 +52,7 @@ FIG_2_1_kendal_pop = (
 )
 
 gg.ggplot.save(FIG_2_1_kendal_pop, os.path.join(
-    data_dir, 'FIG_2_1_kendal_pop.pdf'), limitsize=False)
+    path_plots, 'FIG_2_1_kendal_pop.pdf'), limitsize=False)
 
 
 # calculate a correlation between OpenAlex and Scopus yearly netmigration rates
@@ -94,5 +96,5 @@ FIG_2_2_kendal_netmig = (
 )
 
 gg.ggplot.save(FIG_2_2_kendal_netmig, os.path.join(
-    data_dir, 'FIG_2_2_kendal_netmig.pdf'), limitsize=False)
+    path_plots, 'FIG_2_2_kendal_netmig.pdf'), limitsize=False)
 
