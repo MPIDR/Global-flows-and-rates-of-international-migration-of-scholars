@@ -4,9 +4,9 @@
 
 **Title**: Global flows and rates of international migration of scholars
 
-**Citation** (APA style): Aliakbar Akbaritabar, Tom Theile, and Emilio Zagheni (2023) Global flows and rates of international migration of scholars, MPIDR Working Paper.
+**Citation** (APA style): Aliakbar Akbaritabar, Tom Theile, and Emilio Zagheni (2023) Global flows and rates of international migration of scholars, MPIDR Working Paper. [https://dx.doi.org/10.4054/MPIDR-WP-2023-018](https://dx.doi.org/10.4054/MPIDR-WP-2023-018)
 
-**DOI**: [XXXXXXXXXX-XXXXXXXXXX](XXXXXXXXXX-XXXXXXXXXX)
+**DOI**: [https://dx.doi.org/10.4054/MPIDR-WP-2023-018](https://dx.doi.org/10.4054/MPIDR-WP-2023-018)
 
 **Maintainer of the repository:** Tom Theile
 
