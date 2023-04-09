@@ -115,6 +115,15 @@ bla = fig.savefig(fn,dpi=300)
 
 # %%
 ###############################################################################
+# hover data is needed for some figures below
+hover_data={
+            'countryname':True,
+            'outmigrationrate':True, 
+            # 'padded_population_of_researchers':True,
+            'paddedpop':True,
+            'year':True,
+        }
+
 # plot flow from one country to some other countries as line plot:
 
 for country_source in ["United States"]:# ["Germany", "United Kingdom", "United States", "Japan", "China", "Brazil"]:
