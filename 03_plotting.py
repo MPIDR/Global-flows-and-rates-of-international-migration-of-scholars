@@ -164,7 +164,7 @@ for country_source in ["United States"]:# ["Germany", "United Kingdom", "United 
                         plot_bgcolor='rgba(0,0,0,0)',
                         # xaxis=dict(showgrid=False),
                         yaxis=dict(showgrid=False),
-                        legend_title_text='destination country'
+                        legend_title_text='Destination country'
                       )
     # change y-axis to show the number of migrants in millions:
     fig1.update_yaxes(tickformat=".0f")
@@ -197,7 +197,7 @@ for country_destination in  ["United States"]:#["Germany", "United Kingdom", "Un
                         plot_bgcolor='rgba(0,0,0,0)',
                         # xaxis=dict(showgrid=False),
                         yaxis=dict(showgrid=False),
-                        legend_title_text='source country'
+                        legend_title_text='Source country'
                     )
     # change the legend title
     fig1.show()
