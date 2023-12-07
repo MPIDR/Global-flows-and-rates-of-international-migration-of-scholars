@@ -124,6 +124,20 @@ hover_data={
             'year':True,
         }
 
+# define colors for all relevant countries:
+country_colors = {
+    'China': '#DD7464',  
+    'United States': '#0000FF', 
+    'Japan': '#C3F57D', 
+    'Germany': '#E59D45', 
+    'United Kingdom': '#7C84F2', 
+    'Korea, Rep.': '#003478', 
+    'Canada': '#C3F57D', 
+    'Australia': '#5DEADF', 
+    'UK': '#7C84F2', 
+    'USA': '#0000FF',
+}
+
 # plot flow from one country to some other countries as line plot:
 
 for country_source in ["United States"]:# ["Germany", "United Kingdom", "United States", "Japan", "China", "Brazil"]:
@@ -137,16 +151,20 @@ for country_source in ["United States"]:# ["Germany", "United Kingdom", "United 
     # add values for "other countries" to the dataframe (sum of all other countries):
     df1tomany.sort_values(by=['year'], inplace=True)
     df1tomany.rename({'countrynamefrom':'country_source', 'countrynameto':'country_destination'}, axis=1, inplace=True)
-    fig1 = px.line(df1tomany, x="year", y="n_migrations",
+    fig1 = px.line(df1tomany, x="year", y="n_migrations", color_discrete_map=country_colors,
                             color="country_destination",log_y=True,line_shape="linear", render_mode="svg",
                             hover_name="year", #text="iso3codeto",#range_y=[0.015,0.075],
                             hover_data=[f"n_migrations",f"normalized_migration1",f"normalized_migration2"],
 )
     fig1.update_traces(textposition='top center')
-    fig1.update_layout(title=f"Flow of scholarly migrants from {country_source} to other countries",
+    fig1.update_layout(title=f"Flow of scholarly migrants from the {country_source} to top destinations",
                         xaxis_title="Year",    
-                        yaxis_title=f"Number of scholarly migrants from {country_source} to ...",
-                        font=dict(size=12, color="#7f7f7f")
+                        yaxis_title=f"Number of scholarly migrants", # from the {country_source} to ...",
+                        font=dict(size=12, color="#7f7f7f"),
+                        plot_bgcolor='rgba(0,0,0,0)',
+                        # xaxis=dict(showgrid=False),
+                        yaxis=dict(showgrid=False),
+                        legend_title_text='destination country'
                       )
     # change y-axis to show the number of migrants in millions:
     fig1.update_yaxes(tickformat=".0f")
@@ -167,16 +185,21 @@ for country_destination in  ["United States"]:#["Germany", "United Kingdom", "Un
     df1tomany = dfflow[(dfflow.countrynameto==country_destination)&(dfflow.countrynamefrom.isin(origins))]
     df1tomany.sort_values(by=['year'], inplace=True)
     df1tomany.rename({'countrynamefrom':'country_source', 'countrynameto':'country_destination'}, axis=1, inplace=True)
-    fig1 = px.line(df1tomany, x="year", y="n_migrations",
+    fig1 = px.line(df1tomany, x="year", y="n_migrations", color_discrete_map=country_colors,
                             color="country_source",log_y=True,line_shape="linear", render_mode="svg",
                             hover_name="year", # text="iso3codefrom",#range_y=[0.015,0.075],
                             hover_data=[f"n_migrations",f"normalized_migration1",f"normalized_migration2"])
     fig1.update_traces(textposition='top center')
-    fig1.update_layout(title=f"Flow of scholarly migrants from other countries to {country_destination}",
+    fig1.update_layout(title=f"Flow of scholarly migrants to the {country_destination}",
                         xaxis_title="Year",
-                        yaxis_title=f"Number of scholarly migrants from ... to {country_destination}",
-                        font=dict(size=12, color="#7f7f7f")
-                        )
+                        yaxis_title=f"Number of scholarly migrants", # from ... to {country_destination}",
+                        font=dict(size=12, color="#7f7f7f"),
+                        plot_bgcolor='rgba(0,0,0,0)',
+                        # xaxis=dict(showgrid=False),
+                        yaxis=dict(showgrid=False),
+                        legend_title_text='source country'
+                    )
+    # change the legend title
     fig1.show()
     fig1.write_image(f"{path_plots}FIG_4_3_{data_provider}_flow_over_time_othercountries_to_{country_destination}.pdf")
 
@@ -363,3 +386,5 @@ FIG_2_2_kendal_netmig = (
 gg.ggplot.save(FIG_2_2_kendal_netmig, os.path.join(
     path_plots, 'FIG_2_2_kendal_netmig.pdf'), limitsize=False)
 
+
+# %%
