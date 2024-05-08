@@ -35,3 +35,11 @@ The data used were extracted from two Bibliometric Databases, Scopus and OpenAle
 | data_processed\\ | Folder with processed/enriched data. Produced by scripts 01 and 02                                                     |
 
 We added all data files as plain text csv-files (with header line) and as binary [parquet](https://parquet.apache.org/) files. The contents of the csv and parquet files are the same.
+
+
+## License
+
+(c) by Aliakbar Akbaritabar, Tom Theile, and Emilio Zagheni
+The output data in the folder ./data_processed is licensed under a Creative Commons Attribution 4.0 International License. See license.cc-by.md
+
+The code and everything else is licensed under the GNU AFFERO GENERAL PUBLIC LICENSE Version 3, 19 November 2007. See license.agpl.md
