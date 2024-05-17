@@ -24,12 +24,12 @@ os.makedirs(path_processed, exist_ok=True)
 os.makedirs(path_plots, exist_ok=True)
 
 # input data files:
-fn_country_data = f"{path_input}{data_provider}_2022_07_V1_scholarlymigration_country.parquet"
-fn_flow_data = f"{path_input}{data_provider}_2022_07_V1_scholarlymigration_countryflows.parquet"
+fn_country_data = f"{path_input}{data_provider}_2024_V1_scholarlymigration_country.parquet"
+fn_flow_data = f"{path_input}{data_provider}_2024_V1_scholarlymigration_countryflows.parquet"
 
 # output data files:
-fn_country_data_enriched =  f"{path_processed}{data_provider}_2023_V1_scholarlymigration_country_enriched.parquet" # f'{path_processed}{data_provider}_country_enriched.parquet' #
-fn_flows_enriched = f"{path_processed}{data_provider}_2023_V1_scholarlymigration_countryflows_enriched.parquet"
+fn_country_data_enriched =  f"{path_processed}{data_provider}_2024_V1_scholarlymigration_country_enriched.parquet" # f'{path_processed}{data_provider}_country_enriched.parquet' #
+fn_flows_enriched = f"{path_processed}{data_provider}_2024_V1_scholarlymigration_countryflows_enriched.parquet"
 
 # temporary
 # fn_country_data = fn_country_data.replace(".parquet",".csv")
@@ -80,7 +80,14 @@ con.execute(query).fetchdf()
 # use duckdb to merge bibliometric data with country data:
 
 query = f"""SELECT 
-dfsmig.*,-- EXCLUDE (countrycode),
+dfsmig.year as year,
+dfsmig.countrycode as countrycode,
+dfsmig.padded_population_of_researchers,
+dfsmig.number_of_inmigrations,
+dfsmig.number_of_outmigrations,
+dfsmig.netmigration,
+outmigrationrate, inmigrationrate, netmigrationrate,
+
 dfcountries.iso2Code as iso2code,
 dfcountries.iso3Code as iso3code,
 dfcountries.name as countryname, 
@@ -115,10 +122,9 @@ dfgdp1 = pd.json_normalize(r.json()[1])
 # create a wide dataframe with years as columns and the "value" column as values:
 dfgdp1_wide = pd.pivot_table(dfgdp1, values='value', index=['countryiso3code'], columns=['date'])
 
-if "2022" in dfgdp1_wide.columns:
-    pass
-else:
-    dfgdp1_wide["2022"] = pd.NA
+for iyear in range(2022,2024):
+    if str(iyear) not in dfgdp1_wide.columns:
+        dfgdp1_wide[str(iyear)] = pd.NA
 dfgdp1_wide
 #%%
 # forward fill the missing values:
@@ -157,10 +163,9 @@ data = r.json()
 dfpop1 = pd.json_normalize(r.json()[1])
 dfpop1_wide = pd.pivot_table(dfpop1, values='value', index=['countryiso3code'], columns=['date'])
 
-if "2022" not in dfpop1_wide.columns:
-    dfpop1_wide["2022"] = pd.NA
-if "2023" not in dfpop1_wide.columns:
-    dfpop1_wide["2023"] = pd.NA
+for iyear in range(2022,2024):
+    if str(iyear) not in dfpop1_wide.columns:
+        dfpop1_wide[str(iyear)] = pd.NA
 #%%
 dfpop1_wide = dfpop1_wide.ffill(axis=1)
 dfpop1_ffilled = pd.melt(dfpop1_wide.reset_index(),id_vars=["countryiso3code"],value_vars=[str(x) for x in range(1996,2024)])
@@ -192,7 +197,7 @@ dfsmiggdppop.info()
 # save to parquet:
 query = f"""Copy 
 (SELECT * FROM dfsmiggdppop
-  WHERE year >1997 and year <2019
+  WHERE year >1997 and year <2021
   ORDER BY iso3code, year)
 TO '{fn_country_data_enriched}';"""
 con.execute(query)
@@ -200,7 +205,7 @@ con.execute(query)
 # save to csv:
 query = f"""Copy 
 (SELECT * FROM dfsmiggdppop
-  WHERE year >1997 and year <2019
+  WHERE year >1997 and year <2021
   ORDER BY iso3code, year)
 TO '{fn_country_data_enriched[:-8]}.csv'  (HEADER, DELIMITER ',');"""
 con.execute(query)
@@ -262,8 +267,8 @@ query = f"""SELECT ccf.n_migrations as n_migrations,
     cto.population as populationto,
     cfrom.iso3code as iso3codefrom,
     cto.iso3code as iso3codeto,
-    cfrom.paddedpop as paddedpopfrom,
-    cto.paddedpop as paddedpopto,
+    cfrom.padded_population_of_researchers as paddedpopfrom,
+    cto.padded_population_of_researchers as paddedpopto,
     cfrom.number_of_inmigrations as number_of_inmigrationsfrom,
     cto.number_of_inmigrations as number_of_inmigrationsto,
     cfrom.number_of_outmigrations as number_of_outmigrationsfrom,
