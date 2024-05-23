@@ -212,13 +212,26 @@ p1 = ["n_mobile_authors_openalex", "n_mobile_authors_scopus"]
 p2 = ["n_mobile_authors_scopus","n_mobile_authors_orcid"]
 p3 = ["n_mobile_authors_openalex", "n_mobile_authors_orcid"]
 p = [p1, p2, p3]
-i=2
+i=0
 fig = px.scatter(dfmerged[dfmerged["number_of_authors_scopus"]>1000], x=p[i][0], y=p[i][1], opacity=0.55, color="year", hover_data=["countrycode", "year", p[i][0], p[i][1]])
 fig
 # %%
 # save as pdf
 import plotly
-plotly.io.write_image(fig, r"./plots/3way_comparison.pdf")
+i=0
+
+fig = px.scatter(dfmerged[dfmerged["number_of_authors_scopus"]>1000], x=p[i][0], y=p[i][1], opacity=0.55, color="year", hover_data=["countrycode", "year", p[i][0], p[i][1]])
+plotly.io.write_image(fig, r"./plots/3way_comparison_oa_scopus.pdf")
+#%%
+i=1
+fig = px.scatter(dfmerged[dfmerged["number_of_authors_scopus"]>1000], x=p[i][0], y=p[i][1], opacity=0.55, color="year", hover_data=["countrycode", "year", p[i][0], p[i][1]])
+plotly.io.write_image(fig, r"./plots/3way_comparison_orcid_scopus.pdf")
+
+#%%
+i=2
+fig = px.scatter(dfmerged[dfmerged["number_of_authors_scopus"]>1000], x=p[i][0], y=p[i][1], opacity=0.55, color="year", hover_data=["countrycode", "year", p[i][0], p[i][1]])
+import plotly
+plotly.io.write_image(fig, r"./plots/3way_comparison_orcid_oa.pdf")
 
 # %%
 dfmerged[["number_of_authors_openalex","number_of_authors_scopus",
