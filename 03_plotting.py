@@ -199,6 +199,8 @@ for country_destination in  ["United States"]:#["Germany", "United Kingdom", "Un
                         yaxis=dict(showgrid=False),
                         legend_title_text='Source country'
                     )
+    # change y-axis to show the number of migrants in millions:
+    fig1.update_yaxes(tickformat=".0f")
     # change the legend title
     fig1.show()
     fig1.write_image(f"{path_plots}FIG_4_3_{data_provider}_flow_over_time_othercountries_to_{country_destination}.pdf")
