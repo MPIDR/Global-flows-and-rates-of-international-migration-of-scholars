@@ -1,6 +1,4 @@
 #
-
-
 #%%
 import pandas as pd
 import numpy as np
@@ -14,16 +12,13 @@ import buckaroo
 # * orcid employment history (computed by us from the ORCID data, ~800MB, not in this repository due to its size)
 # * scopus residence countries of all authors by our mode based method (data is restricted by scopus)
 # * OpenAlex residence countries of all authors by our mode based method (data is open, but not in this repository due to its size (~4GB))
-# email theile@mpidr.de for the data
+# email akbaritabar@demogr.mpg.de or theile@demogr.mpg.de for questions about the data
 
 
 fn_orcid = r"G:\bib\orcid\read_orcid_prod6.parquet"
 
-fn_scopus = r"G:\bib\scopus_2023_10\run_2024_03_14\sc2310_dfcorrected.pickle"
-fn_scopus = r"G:\bib\scopus_2023_10\run_2024_03_14\author_stats_3.parquet"
 fn_scopus = r"G:\bib\scopus_2023_10\authorshiprec202310.parquet"
 
-fn_oa = r"G:\bib\openalex_2023_03\run_2023_02_28\oa2302_dfcorrected.pickle"
 fn_oa = r"G:\bib\openalex_2023_03\run_2023_02_28\oa2302_authorshiprecords.sorted.parquet_predicted_country_filtered.parquet"
 
 q = f"""SELECT * FROM '{fn_orcid}' LIMIT 5"""
