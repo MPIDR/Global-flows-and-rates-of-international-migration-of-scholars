@@ -1,0 +1,10 @@
+data_processed/3way_comparison_number_of_authors.tex
+plots/3way_comparison.pdf
+plots/gdp_per_capita_vs_outmigrate_openalex.html
+plots/inmig_openalex_vs_inmig_scopus.html
+plots/inmigrate_openalex_vs_inmigrate_scopus.html
+plots/netmig_openalex_vs_netmig_scopus_pop.pdf
+plots/netmig_openalex_vs_netmig_scopus.html
+plots/netmig_openalex_vs_netmig_scopus.pdf
+plots/outmig_openalex_vs_outmig_scopus.html
+plots/paddedpop_openalex_vs_paddedpop_scopus.html

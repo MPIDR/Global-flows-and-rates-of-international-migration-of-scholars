@@ -20,8 +20,8 @@ path_input = "./data_input/"
 path_processed = "./data_processed/"
 path_plots = "./FIGURES/"
 
-fn_country_enriched =  f"{path_processed}{data_provider}_2023_V1_scholarlymigration_country_enriched.parquet" 
-fn_flows_enriched = f"{path_processed}{data_provider}_2023_V1_scholarlymigration_countryflows_enriched.parquet"
+fn_country_enriched =  f"{path_processed}{data_provider}_2024_V1_scholarlymigration_country_enriched.parquet" 
+fn_flows_enriched = f"{path_processed}{data_provider}_2024_V1_scholarlymigration_countryflows_enriched.parquet"
 
 
 #%%
@@ -120,7 +120,7 @@ hover_data={
             'countryname':True,
             'outmigrationrate':True, 
             # 'padded_population_of_researchers':True,
-            'paddedpop':True,
+            'padded_population_of_researchers':True,
             'year':True,
         }
 
@@ -199,6 +199,7 @@ for country_destination in  ["United States"]:#["Germany", "United Kingdom", "Un
                         yaxis=dict(showgrid=False),
                         legend_title_text='Source country'
                     )
+    # change y-axis to show the number of migrants in millions:
     fig1.update_yaxes(tickformat=".0f")
     # change the legend title
     fig1.show()
@@ -225,18 +226,18 @@ dfmigrouped = dfcountry[(dfcountry["year"] >= startyear ) & (dfcountry["year"] <
             "number_of_inmigrations":"mean",
             "number_of_outmigrations":"mean",
             "netmigration":"mean",
-            #"padded_population_of_researchers":"mean",
-            "paddedpop":"mean",
+            #"paddedpop":"mean",
+            "padded_population_of_researchers":"mean",
             "year":"mean",
             "countryname":"first",
             "iso3code":"first"
         })
 # calculate rates:
-dfmigrouped["outmigrationrate"] = dfmigrouped["number_of_outmigrations"]/dfmigrouped["paddedpop"]
-dfmigrouped["inmigrationrate"] = dfmigrouped["number_of_inmigrations"]/dfmigrouped["paddedpop"]
-dfmigrouped["netmigrationrate"] = dfmigrouped["netmigration"]/dfmigrouped["paddedpop"]
-dfmigrouped["Net migration rate"] = dfmigrouped["netmigration"]/dfmigrouped["paddedpop"]
-worldwide_total_researchers_in_period = dfmigrouped["paddedpop"].sum()
+dfmigrouped["outmigrationrate"] = dfmigrouped["number_of_outmigrations"]/dfmigrouped["padded_population_of_researchers"]
+dfmigrouped["inmigrationrate"] = dfmigrouped["number_of_inmigrations"]/dfmigrouped["padded_population_of_researchers"]
+dfmigrouped["netmigrationrate"] = dfmigrouped["netmigration"]/dfmigrouped["padded_population_of_researchers"]
+dfmigrouped["Net migration rate"] = dfmigrouped["netmigration"]/dfmigrouped["padded_population_of_researchers"]
+worldwide_total_researchers_in_period = dfmigrouped["padded_population_of_researchers"].sum()
 print(f"{worldwide_total_researchers_in_period=}")
 
 #%%

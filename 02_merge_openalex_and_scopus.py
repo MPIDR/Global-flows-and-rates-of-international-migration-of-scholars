@@ -13,9 +13,9 @@ path_plots = "./plots/"
 
 
 fn_country_data_enriched_1 =  f"{path_processed}{data_providers[0]}_2023_V1_scholarlymigration_country_enriched.parquet" # f'{path_processed}{data_provider}_country_enriched.parquet' #
-fn_country_data_enriched_2 =  f"{path_processed}{data_providers[1]}_2023_V1_scholarlymigration_country_enriched.parquet" # f'{path_processed}{data_provider}_country_enriched.parquet' #
+fn_country_data_enriched_2 =  f"{path_processed}{data_providers[1]}_2024_V1_scholarlymigration_country_enriched.parquet" # f'{path_processed}{data_provider}_country_enriched.parquet' #
 fn_flows_enriched_1 = f"{path_processed}{data_providers[0]}_2023_V1_scholarlymigration_countryflows_enriched.parquet"
-fn_flows_enriched_2 = f"{path_processed}{data_providers[1]}_2023_V1_scholarlymigration_countryflows_enriched.parquet"
+fn_flows_enriched_2 = f"{path_processed}{data_providers[1]}_2024_V1_scholarlymigration_countryflows_enriched.parquet"
 
 # peak inside the files:
 con = duckdb.connect(':memory:')
@@ -37,22 +37,22 @@ SELECT
     coalesce(df1.gdp_per_capita, df2.gdp_per_capita) as gdp_per_capita,
     coalesce(df1.population, df2.population) as population,
     df1.padded_population_of_researchers as paddedpop_openalex,
-    df2.paddedpop as paddedpop_scopus,
+    df2.padded_population_of_researchers as paddedpop_scopus,
     df1.number_of_inmigrations as inmig_openalex,
     df2.number_of_inmigrations as inmig_scopus,
     df1.number_of_outmigrations as outmig_openalex,
     df2.number_of_outmigrations as outmig_scopus,
     -- cast as float to avoid integer division:
     cast(df1.number_of_inmigrations as float) / df1.padded_population_of_researchers as inmigrate_openalex,
-    cast(df2.number_of_inmigrations as float) / df2.paddedpop as inmigrate_scopus,
+    cast(df2.number_of_inmigrations as float) / df2.padded_population_of_researchers as inmigrate_scopus,
     cast(df1.number_of_outmigrations as float) / df1.padded_population_of_researchers as outmigrate_openalex,
-    cast(df2.number_of_outmigrations as float) / df2.paddedpop as outmigrate_scopus,
+    cast(df2.number_of_outmigrations as float) / df2.padded_population_of_researchers as outmigrate_scopus,
     cast(df1.number_of_inmigrations as float) / df1.population as inmigrate_openalex_pop,
     cast(df2.number_of_inmigrations as float) / df2.population as inmigrate_scopus_pop,
     df1.netmigration as netmig_openalex,
     df2.netmigration as netmig_scopus,
     cast(df1.netmigration as float) / df1.padded_population_of_researchers as netmigrate_openalex,
-    cast(df2.netmigration as float) / df2.paddedpop as netmigrate_scopus,
+    cast(df2.netmigration as float) / df2.padded_population_of_researchers as netmigrate_scopus,
     coalesce(df1.region, df2.region) as region,
     coalesce(df1.incomelevel, df2.incomelevel) as incomelevel
 FROM '{fn_country_data_enriched_1}' AS df1
