@@ -1,8 +1,8 @@
-## Data and code for performing analyses and plotting figures for "Global flows and rates of international migration of scholars"
+## Data and code for performing analyses and plotting figures for "Bilateral flows and rates of international migration of scholars for 210 countries and areas for the period 1998-2020"
 
 **Information on related working paper**
 
-**Title**: Global flows and rates of international migration of scholars
+**Title**: Bilateral flows and rates of international migration of scholars for 210 countries and areas for the period 1998-2020
 
 **Abstract**: 
 Lack of reliable and comprehensive migration data is one of the major reasons that prevents advancements in our understanding of the causes and consequences of migration processes, including for specific groups like high-skilled migrants. We leverage large-scale bibliometric data from Scopus and OpenAlex to trace the global movements of a specific group of innovators: scholars. We developed pre-processing steps and offered best practices for the measurement and identification of migration events from bibliometric data. Our results show a high level of correlation between the count of scholars in Scopus and OpenAlex for most countries. While the magnitude of observed migration events in OpenAlex is larger than in Scopus, the bilateral flows among top pairs of origin and destination countries are consistent in the two databases. Even though OpenAlex has a higher coverage of non-Western countries, the highest correlations with Scopus are observed in Western countries. We share our aggregated estimates of international migration rates, and bilateral flows, at the country level, and expect that our estimates will enable researchers to improve our understanding of the causes and consequences of migration of scholars, and to forecast the future mobility of global academic talent.
