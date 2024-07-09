@@ -14,7 +14,7 @@
 
 #%%
 # change this to "scopus" or "openalex" to switch between the two data providers:
-data_provider=["openalex", "scopus"][0]
+data_provider=["openalex", "scopus"][1]
 
 path_input = "./data_input/"
 path_processed = "./data_processed/"
@@ -128,7 +128,7 @@ hover_data={
 country_colors = {
     'China': '#DD7464',  
     'United States': '#0000FF', 
-    'Japan': '#C3F57D', 
+    'Japan': '#5DEADF', 
     'Germany': '#E59D45', 
     'United Kingdom': '#7C84F2', 
     'Korea, Rep.': '#003478', 
@@ -199,6 +199,7 @@ for country_destination in  ["United States"]:#["Germany", "United Kingdom", "Un
                         yaxis=dict(showgrid=False),
                         legend_title_text='Source country'
                     )
+    fig1.update_yaxes(tickformat=".0f")
     # change the legend title
     fig1.show()
     fig1.write_image(f"{path_plots}FIG_4_3_{data_provider}_flow_over_time_othercountries_to_{country_destination}.pdf")
