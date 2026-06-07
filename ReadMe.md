@@ -11,6 +11,9 @@ Subnational migration is often more intensive than international migration. Thes
 
 **DOI**: [https://dx.doi.org/10.4054/MPIDR-WP-2026-029](https://dx.doi.org/10.4054/MPIDR-WP-2026-029)
 
+**Download SMD 2.0 Data on Zenodo**: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20487917.svg)](https://doi.org/10.5281/zenodo.20487917)
+
+
 **Maintainer of the repository:** Tom Theile
 
 **Authors of article:** Aliakbar Akbaritabar, Tom Theile, and Emilio Zagheni.
